@@ -5,6 +5,11 @@
 
 set -e
 
+# Change to project root directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
+
 echo "🔍 Starting Trivy Security Scans..."
 
 # Colors for output
@@ -44,7 +49,7 @@ trivy fs . --format json --output reports/filesystem-scan.json
 # 2. Docker image scan (if Docker is available)
 if command -v docker &> /dev/null; then
     print_status "Building Docker image..."
-   docker build -t use-trivy -f docker/Dockerfile docker/
+   docker build -t use-trivy:latest -f docker/DockerFile docker/
     
     print_status "Running Docker image scan..."
     trivy image use-trivy:latest --format table --output reports/docker-scan.txt

@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Trivy repository scan
-        uses: aquasecurity/trivy-action@v0.18.0
+        uses: aquasecurity/trivy-action@v0.31.0
         with:
           scan-type: 'fs'
           scan-ref: '.'
@@ -43,7 +43,7 @@ jobs:
         run: docker build -t use-trivy:latest -f docker/DockerFile docker/
 
       - name: Run Trivy vulnerability scanner on Docker image
-        uses: aquasecurity/trivy-action@0.18.0
+        uses: aquasecurity/trivy-action@0.31.0
         with:
           image-ref: 'use-trivy:latest'
           format: 'sarif'

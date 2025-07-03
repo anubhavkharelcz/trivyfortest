@@ -44,11 +44,11 @@ trivy fs . --format json --output reports/filesystem-scan.json
 # 2. Docker image scan (if Docker is available)
 if command -v docker &> /dev/null; then
     print_status "Building Docker image..."
-    docker build -t trivy-demo:latest ./docker
+   docker build -t use-trivy -f docker/Dockerfile docker/
     
     print_status "Running Docker image scan..."
-    trivy image trivy-demo:latest --format table --output reports/docker-scan.txt
-    trivy image trivy-demo:latest --format json --output reports/docker-scan.json
+    trivy image use-trivy:latest --format table --output reports/docker-scan.txt
+    trivy image use-trivy:latest --format json --output reports/docker-scan.json
 else
     print_warning "Docker not found. Skipping Docker image scan."
 fi
@@ -73,7 +73,7 @@ Generated on: $(date)
 - **JSON Report**: [filesystem-scan.json](filesystem-scan.json)
 
 ### Docker Image Scan
-- **Image**: trivy-demo:latest
+- **Image**: use-trivy:latest
 - **Report**: [docker-scan.txt](docker-scan.txt)
 - **JSON Report**: [docker-scan.json](docker-scan.json)
 

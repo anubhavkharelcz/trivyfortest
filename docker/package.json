@@ -1,0 +1,39 @@
+{
+    "name": "trivy-security-demo",
+    "version": "1.0.0",
+    "description": "Demo Node.js application for Trivy security scanning",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+      "trivy",
+      "security",
+      "demo",
+      "nodejs",
+      "express"
+    ],
+    "author": "Demo Author",
+    "license": "MIT",
+    "dependencies": {
+      "express": "4.17.1",
+      "cors": "2.8.5",
+      "helmet": "4.6.0",
+      "morgan": "1.10.0",
+      "lodash": "4.17.20",
+      "jsonwebtoken": "8.5.1",
+      "bcrypt": "5.0.1",
+      "multer": "1.4.2",
+      "axios": "0.21.1",
+      "moment": "2.29.1",
+      "validator": "13.6.0"
+    },
+    "devDependencies": {
+      "nodemon": "2.0.12"
+    },
+    "engines": {
+      "node": ">=14.0.0"
+    }
+  }

@@ -25,6 +25,8 @@ jobs:
           scan-ref: '.'
           format: 'sarif'
           output: 'trivy-repo-results.sarif'
+          scanners: 'vuln,secret'  # Enable both vulnerability and secret scanning
+
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
@@ -48,6 +50,8 @@ jobs:
           image-ref: 'use-trivy:latest'
           format: 'sarif'
           output: 'trivy-docker-results.sarif'
+         scanners: 'vuln,secret'  # Enable both vulnerability and secret scanning
+
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
